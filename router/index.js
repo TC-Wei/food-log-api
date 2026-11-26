@@ -19,6 +19,13 @@ router.post("/", (req, res) => {
   foods.push(newFood);
   res.status(201).json(newFood);
 });
+router.delete("/:id", function (req, res) {
+  const id = Number(req.params.id);
+  const index = foods.findIndex((item) => item.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: "查無此id" });
+  }
+});
 
 router.get("/", function (req, res) {
   res.json(foods);
