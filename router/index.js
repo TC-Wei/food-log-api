@@ -25,6 +25,8 @@ router.delete("/:id", function (req, res) {
   if (index === -1) {
     return res.status(404).json({ message: "查無此id" });
   }
+  foods.splice(index, 1);
+  res.status(200).json({ message: "已刪除" });
 });
 
 router.get("/", function (req, res) {
